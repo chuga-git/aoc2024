@@ -9,13 +9,11 @@ f = sys.stdin
 # this will fail unless golfed soln is commented out (or vice versa)
 lines = f.read().strip().splitlines()
 
-
 def ints(s: str) -> list[int]:
     return list(map(int, re.findall(r"-?\d+", s)))
 
 def drop1(xs):
     return [xs[:i] + xs[i+1:] for i in range(len(xs))]
-
 
 def safe(xs):
     # todo: figure out why rhs has to be a list comprehension but doesn't throw any errors when consuming when not
@@ -26,6 +24,7 @@ def part1():
 
 def part2():
     return sum(any(map(safe, drop1(x)))for x in map(ints, lines))
+
 print("part 1:", part1())
 print("part 2:", part2())
 
